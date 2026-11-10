@@ -23,9 +23,9 @@ public class balas : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Morí");
+        Debug.Log("Adeu");
 
-        GameManager.EnemigoDestruido(GameObject);
+        GameManager.BalaDestruida(GameObject);
 
         Destroy(gameObject);
     }

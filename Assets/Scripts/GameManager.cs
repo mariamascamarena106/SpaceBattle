@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void EnemigoDestruido(GameObject bala)
+    public void BalaDestruida(GameObject bala)
     {
 
 
