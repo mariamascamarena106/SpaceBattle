@@ -20,7 +20,7 @@ public class balas : MonoBehaviour
 
     }
 
-
+/*
     private void OnMouseDown()
     {
         Debug.Log("Adeu");
@@ -29,4 +29,5 @@ public class balas : MonoBehaviour
 
         Destroy(gameObject);
     }
+*/
 }

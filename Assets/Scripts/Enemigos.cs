@@ -5,12 +5,14 @@ using System.Collections;
 
 public class Enemigos : MonoBehaviour
 {
-
+    List<GameObject> rayoMaloList = new List<GameObject>();
     [SerializeField] private GameObject EnemyPrefab;
     [SerializeField] private float speed = 3;
     GameObject createdEnemy;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private int NumeroEnemigos = 1;
+    [SerializeField] private int NumeroEnemigos = 2;
+    private float temporizador = 0f;
+    [SerializeField] private GameObject rayo;
 
     private List<GameObject> Generarenemigos = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,8 +21,6 @@ public class Enemigos : MonoBehaviour
     void Start()
     {
         //TODO: Llamamos a la generación de enemigos
-
-        GenerarEnemigos();
     }
 
     void moverEnemigos(List<GameObject> enemies)
@@ -54,57 +54,24 @@ public class Enemigos : MonoBehaviour
         moverEnemigos(Generarenemigos);
 
 
+        temporizador -= Time.deltaTime;
 
-    }
+        //Disparar
 
-
-    private void Instanciarenemigos()
-    {
-        int randomPosition = Random.Range(0, spawnPoints.Length);
-        for (int i = 0; i < NumeroEnemigos; i++)
+        if (temporizador <= 0)
         {
-            createdEnemy = Instantiate(
-            EnemyPrefab,
-            spawnPoints[randomPosition].position,
-            Quaternion.identity);
+            GameObject newBala = Instantiate(rayo);
+            newBala.transform.position += new Vector3(transform.position.x, -5.5f, 0f);
+
+            rayoMaloList.Add(newBala);
 
 
 
-            Generarenemigos.Add(createdEnemy);
+            Debug.Log("piu");
+
+            temporizador = 1f;
+
         }
-    }
 
-
-    private void GenerarEnemigos()
-    {
-        
-        bool[] ocupados = new bool[spawnPoints.Length];
-        
-        int randomPosition = Random.Range(0, spawnPoints.Length);
-        for (int i = 0; i < NumeroEnemigos; i++)
-        {
-
-            while (ocupados[randomPosition])
-            {
-                randomPosition = Random.Range(0, spawnPoints.Length);
-            }
-
-            ocupados[randomPosition] = true;
-
-         
-            createdEnemy = Instantiate(
-                EnemyPrefab,
-                spawnPoints[randomPosition].position,
-                Quaternion.identity);
-
-
-            Generarenemigos.Add(createdEnemy);
-
-
-           
-            EnemyScript eScript = createdEnemy.GetComponent<EnemyScript>();
-
-            eScript.Initialize(this);
-        }
-    }
+    }   
 }

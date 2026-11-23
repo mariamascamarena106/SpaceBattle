@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer > 1.5f)
+        if (timer > 2f)
         {
             GameObject newEnemy = Instantiate(enemy);
             newEnemy.transform.position = new Vector3((Random.Range(-4f, 3.5f)), 5f, 5f);

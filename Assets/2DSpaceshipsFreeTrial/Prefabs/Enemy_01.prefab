@@ -110,3 +110,4 @@ MonoBehaviour:
   - {fileID: 8323321733668562774}
   - {fileID: 8323321733668562774}
   NumeroEnemigos: 1
+  rayo: {fileID: 8357753763585778774, guid: 65266ac274d7d1e4cabe3ca371f4d713, type: 3}
