@@ -11,11 +11,14 @@ public class GameController : MonoBehaviour
     List<GameObject> enemyList = new List<GameObject>();
     [SerializeField] private float gravity;
     [SerializeField] private Transform PlayerTransform;
+    [SerializeField] private GameObject rayo;
+    Rigidbody2D rbBala;
     private int score;
     List<GameObject> enemyListToRemove = new List<GameObject>();
     void Start()
     {
 
+        rbBala = rayo.GetComponent<Rigidbody2D>();
         timer = 0f;
 
         InvokeRepeating(nameof(GenerarEnemy), 0.5f, 3f);
@@ -41,9 +44,13 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        foreach (GameObject enemy in enemyList)
+        {
+            enemy.transform.position += Vector3.down * gravity * Time.deltaTime;
+            float distancia = Vector3.Distance(enemy.transform.position, PlayerTransform.position);
 
-        timer += Time.deltaTime;
-
+            timer += Time.deltaTime;
+        }
         if (timer > 2f)
         {
             GameObject newEnemy = Instantiate(enemy);
@@ -54,25 +61,9 @@ public class GameController : MonoBehaviour
 
         }
 
-        foreach (GameObject enemy in enemyList)
-        {
-            enemy.transform.position += Vector3.down * gravity * Time.deltaTime;
-            float distancia = Vector3.Distance(enemy.transform.position, PlayerTransform.position);
-            if (distancia < 1f)
-            {
-                Debug.Log("Adeu");
-                enemyListToRemove.Add(enemy);
-
-            }
-
-        }
-        foreach (GameObject enemy in enemyListToRemove)
-        {
-            enemyList.Remove(enemy);
-            Destroy(enemy);
-        }
-
-
+        
 
     }
+
+   
 }

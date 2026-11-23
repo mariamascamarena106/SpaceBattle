@@ -619,6 +619,7 @@ MonoBehaviour:
   enemy: {fileID: 4322012337174557180, guid: 920c9f95f7b441248b2b5629f081771c, type: 3}
   gravity: 2
   PlayerTransform: {fileID: 416506129}
+  rayo: {fileID: 5392286538246284526, guid: 7068db6fab603aa46900ed3b201a7ef7, type: 3}
 --- !u!1001 &7909062654393643873
 PrefabInstance:
   m_ObjectHideFlags: 0

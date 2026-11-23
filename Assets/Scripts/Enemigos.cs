@@ -7,12 +7,13 @@ public class Enemigos : MonoBehaviour
 {
     List<GameObject> rayoMaloList = new List<GameObject>();
     [SerializeField] private GameObject EnemyPrefab;
-    [SerializeField] private float speed = 3;
-    GameObject createdEnemy;
+    [SerializeField] private float speed;
+
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private int NumeroEnemigos = 2;
+
     private float temporizador = 0f;
     [SerializeField] private GameObject rayo;
+
 
     private List<GameObject> Generarenemigos = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,55 +24,41 @@ public class Enemigos : MonoBehaviour
         //TODO: Llamamos a la generación de enemigos
     }
 
-    void moverEnemigos(List<GameObject> enemies)
-    {
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            if (Random.Range(0, 2) == 0)
-            {
-                enemies[i].transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
-            }
-            else
-            {
-                enemies[i].transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
-            }
-        }
-
-    }
-
-
-    // Update is called once per frame
     void Update()
     {
 
-        createdEnemy.transform.position += new Vector3(speed, 0f, 0f) * Time.deltaTime;
+        EnemyPrefab.transform.position += new Vector3(speed, 0f, 0f) * Time.deltaTime;
 
-        if (createdEnemy.transform.position.x > 13f)
+        if (EnemyPrefab.transform.position.x > 13f)
         {
-            createdEnemy.transform.position = Vector3.zero;
+            EnemyPrefab.transform.position = Vector3.zero;
         }
-
-        moverEnemigos(Generarenemigos);
-
 
         temporizador -= Time.deltaTime;
 
         //Disparar
 
-        if (temporizador <= 0)
+        for(int i = 0; i == 0; )
         {
-            GameObject newBala = Instantiate(rayo);
-            newBala.transform.position += new Vector3(transform.position.x, -5.5f, 0f);
+            if (temporizador <= 0)
+            {
+                GameObject newBala = Instantiate(rayo);
+                newBala.transform.position += new Vector3(transform.position.x, -5.5f, 0f);
 
-            rayoMaloList.Add(newBala);
+                rayoMaloList.Add(newBala);
 
+                temporizador = 1f;
 
-
-            Debug.Log("piu");
-
-            temporizador = 1f;
-
+            }
         }
+        
 
-    }   
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+
+
+    }
 }

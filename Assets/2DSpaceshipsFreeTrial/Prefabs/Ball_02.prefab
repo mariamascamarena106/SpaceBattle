@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6070512143136833432}
   - component: {fileID: 8712338354728933237}
-  - component: {fileID: 1639404336794549325}
   - component: {fileID: 5490142355670614499}
   - component: {fileID: -1581302401904698521}
   m_Layer: 0
@@ -94,18 +93,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1639404336794549325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5392286538246284526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 996179b060233e945b04dab0687ab9b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::balas
 --- !u!50 &5490142355670614499
 Rigidbody2D:
   serializedVersion: 5
