@@ -32,7 +32,7 @@ public class SpaceshipScript : MonoBehaviour
 
 
 
-        temporizador -= 0 + Time.deltaTime;
+        temporizador -= Time.deltaTime;
 
         if (Input.GetKey(KeyCode.E))
         {
